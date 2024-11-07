@@ -1,15 +1,8 @@
-# main.py
-
-from Phonebook.add_contact import add_contact
-from Phonebook.search_contact import search_contact
-from Phonebook.delete_contact import delete_contact
-from Phonebook.edit_contact import edit_contact
-from Phonebook.display_contacts import display_contacts
-
+from phone_book import add_contact, search_contact, delete_contact, edit_contact, display_contacts, load_contacts, save_contacts
 
 def phone_book_app():
-    phone_book = {}
-
+    load_contacts()  # Load contacts at the start of the application
+    
     while True:
         print("\nPhone Book Menu:")
         print("1. Add contact")
@@ -17,26 +10,29 @@ def phone_book_app():
         print("3. Delete contact")
         print("4. Edit contact")
         print("5. Display all contacts")
-        print("6. Exit")
+        print("6. Save contacts")
+        print("7. Exit")
         
-        choice = input("Choose an option (1/2/3/4/5/6): ")
+        choice = input("Choose an option (1/2/3/4/5/6/7): ")
         
         if choice == '1':
-            add_contact(phone_book)
+            add_contact()
         elif choice == '2':
-            search_contact(phone_book)
+            search_contact()
         elif choice == '3':
-            delete_contact(phone_book)
+            delete_contact()
         elif choice == '4':
-            edit_contact(phone_book)
+            edit_contact()
         elif choice == '5':
-            display_contacts(phone_book)
+            display_contacts()
         elif choice == '6':
+            save_contacts()
+        elif choice == '7':
+            save_contacts()
             print("Exiting the program. Goodbye!")
             break
         else:
             print("Invalid choice. Please try again.")
-
 
 if __name__ == "__main__":
     phone_book_app()
